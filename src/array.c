@@ -1,21 +1,32 @@
 #include <stdio.h>
-#include <fileapi.h>
-int main(int argc, char const *argv[])
+#include <stdbool.h>
+#include <array.h>
+int sizeOfArray(int list[])
 {
-    int grades[10];
-    int count = 10;
-    long sum = 0;
-    float avg = 0.0f;
-    printf("\n Enter the 10 grades: \n");
+    return sizeof(&list) / sizeof(*list);
+}
 
-    for (int i = 0; i < count; i++)
+void printFormatArray(int listPrime[])
+{
+    int size = sizeOfArray(listPrime);
+    printf("[ ");
+    for (int i = 0; i < size; i++)
     {
-        printf("%2u>", i + 1);
-        scanf("%d", &grades[i]);
-        sum += grades[i];
+        switch (i == 0)
+        {
+        case true:
+            printf("%d", listPrime[i]);
+            break;
+        default:
+            printf(", %d", listPrime[i]);
+            break;
+        }
     }
-    /* code */
-    avg = (float)sum / count;
-    printf("\navg is : %f", avg);
-    return 0;
+    printf(" ]\n");
+}
+
+void push(int arr[], int element)
+{
+    int size = sizeOfArray(arr);
+    arr[size] = element;
 }
