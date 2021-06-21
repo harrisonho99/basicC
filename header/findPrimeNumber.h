@@ -1,22 +1,34 @@
-
-#define MAX_SIZE 1000
-int findPrimeNumber(int start, int end)
+#include "./array.h"
+#include <stdio.h>
+void findPrimeNumber(int start, int end)
 {
-    int listPrime;
     for (int i = start; i < end; i++)
     {
-        switch (start)
+        switch (i)
         {
         case 1:
+            printf("%d \n", i);
             break;
         case 2:
+            printf("%d \n", i);
             break;
         case 3:
+            printf("%d \n", i);
             break;
-        default:
+        default:;
+            int count = 0;
+            for (int y = 4; y < i; y++)
+            {
+                if (i % y == 0)
+                {
+                    ++count;
+                }
+            }
+            if (count == 0)
+            {
+                printf("%d \n", i);
+            }
             break;
         }
     }
-
-    return listPrime;
 }
